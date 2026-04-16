@@ -1,0 +1,13 @@
+env/
+venv/
+.env/
+bin/
+lib/
+__pycache__/
+*.py[cod]
+*$py.class
+.vscode/
+.idea/
+dist/
+build/
+*.egg-info/
