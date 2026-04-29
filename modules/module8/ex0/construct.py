@@ -2,14 +2,20 @@ import sys
 import os
 import site
 
+
 def in_venv():
     return sys.prefix != sys.base_prefix
+
 
 def get_venv_name():
     return os.path.basename(sys.prefix)
 
+
 def get_site_packages():
-    return site.getsitepackages()[0] if hasattr(site, "getsitepackages") else "unknown"
+    if hasattr(site, "getsitepackages"):
+        return site.getsitepackages()[0]
+    return "unknown"
+
 
 if in_venv():
     venv_name = get_venv_name()
