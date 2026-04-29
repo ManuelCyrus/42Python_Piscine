@@ -1,5 +1,7 @@
 import sys
 import importlib
+import matplotlib.pyplot as plt
+
 
 def check_package(name):
     try:
@@ -29,16 +31,13 @@ if not all([pandas, numpy, matplotlib]):
     print("  poetry install")
     sys.exit(1)
 
-import matplotlib.pyplot as plt
 
 print("\nAnalyzing Matrix data...")
 
-# 🧠 gerar dados com numpy (OBRIGATÓRIO pelo enunciado)
 data = numpy.random.normal(loc=0, scale=1, size=1000)
 
 print("Processing 1000 data points...")
 
-# 📊 pandas analysis
 df = pandas.DataFrame(data, columns=["signal"])
 stats = df.describe()
 
@@ -47,7 +46,7 @@ print(stats)
 
 print("\nGenerating visualization...")
 
-plt.figure(figsize=(8,5))
+plt.figure(figsize=(8, 5))
 plt.hist(data, bins=30, color="green", alpha=0.7)
 plt.title("Matrix Data Distribution")
 plt.xlabel("Value")
@@ -59,7 +58,6 @@ plt.savefig(output_file)
 print("\nAnalysis complete!")
 print(f"Results saved to: {output_file}")
 
-# 📦 comparação de versões
 print("\nPackage versions:")
 for pkg in ["pandas", "numpy", "matplotlib"]:
     mod = importlib.import_module(pkg)
